@@ -227,20 +227,6 @@ const Checkout = () => {
             {step === 2 && (
               <div className="checkout-card">
                 <h3 className="checkout-card__title">🧾 Order Review</h3>
-                <div className="checkout-review-items">
-                  {cartItems.map((item) => (
-                    <div key={item.id} className="checkout-review-item">
-                      <img src={item.images?.[0]} alt={item.name}
-                        onError={(e) => { e.target.src = "https://placehold.co/60x60/FDF6F0/C47A5A?text=?"; }}
-                      />
-                      <div className="checkout-review-item__info">
-                        <span>{item.name}</span>
-                        <span className="text-muted">Qty: {item.quantity}</span>
-                      </div>
-                      <span className="checkout-review-item__price">{formatPrice(item.price * item.quantity)}</span>
-                    </div>
-                  ))}
-                </div>
                 <div className="checkout-review-addr">
                   <h4>Ship to</h4>
                   <p>{address.firstName} {address.lastName}</p>

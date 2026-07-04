@@ -9,7 +9,7 @@ const BANKS = [
   { name: "ICICI Bank", logo: "💼" },
   { name: "Axis Bank", logo: "🏢" },
   { name: "Kotak Bank", logo: "🏦" },
-  { name: "Yes Bank", logo: "✅" },
+  { name: "Yes Bank", logo: "🏦" },
 ];
 
 const RazorpayModal = ({ amount, onSuccess, onClose }) => {

@@ -110,37 +110,13 @@ const Cart = () => {
             {isAuthenticated ? (
               <button
                 className="btn btn-primary btn-lg w-full cart-summary__checkout"
-                onClick={async () => {
+                onClick={() => {
                   if (cartItems.length === 0) return alert("Your cart is empty");
-                  setPlacing(true);
-                  try {
-                    const orderData = {
-                      userId: user?.id || 0,
-                      items: cartItems.map((i) => ({
-                        productId: i.id,
-                        name: i.name,
-                        price: i.price,
-                        quantity: i.quantity,
-                        image: i.images?.[0],
-                      })),
-                      total,
-                      shippingAddress: user?.address || {},
-                      paymentMethod: "credit_card",
-                    };
-                    const token = localStorage.getItem(LOCAL_STORAGE_KEYS.TOKEN);
-                    const res = await createOrder(orderData, token);
-                    clearCart();
-                    try { localStorage.removeItem(LOCAL_STORAGE_KEYS.CART); } catch (e) {}
-                    setOrderId(res.data.id);
-                  } catch (err) {
-                    alert("Order failed: " + (err.message || err));
-                  } finally {
-                    setPlacing(false);
-                  }
+                  navigate('/checkout');
                 }}
                 disabled={placing}
               >
-                {placing ? "Placing Order..." : "Place Order →"}
+                Proceed to Checkout →
               </button>
             ) : (
               <button className="btn btn-primary btn-lg w-full cart-summary__checkout" onClick={() => navigate('/login', { state: { from: { pathname: '/cart' } } })}>

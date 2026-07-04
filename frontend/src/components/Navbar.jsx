@@ -105,7 +105,7 @@ const Navbar = () => {
                   src={user.avatar}
                   alt={user.name}
                   className="navbar__avatar"
-                  onError={(e) => { e.target.src = `https://ui-avatars.com/api/?name=${user.name}&background=6366f1&color=fff`; }}
+                  onError={(e) => { e.target.onerror = null; e.target.src = "https://ui-avatars.com/api/?name=" + encodeURIComponent(user?.name || "User") + "&background=C47A5A&color=fff"; }}
                 />
                 <span className="navbar__profile-name">{user.name.split(" ")[0]}</span>
                 <span>▾</span>
