@@ -1,0 +1,167 @@
+.products-page { min-height: 100vh; padding: 2rem 0 5rem; }
+.products-page__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.products-page__title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+}
+.products-page__count { font-size: 0.875rem; margin-top: 0.25rem; }
+
+.products-page__toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.products-page__sort { width: 200px; }
+.products-page__filter-toggle { display: none; }
+
+/* Category Pills */
+.products-page__cats {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.products-page__cat-pill {
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.products-page__cat-pill:hover,
+.products-page__cat-pill.active {
+  background: rgba(196,122,90,0.15);
+  border-color: rgba(196,122,90,0.4);
+  color: var(--primary);
+}
+
+/* Layout */
+.products-page__body {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Sidebar */
+.products-sidebar {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  position: sticky;
+  top: calc(var(--navbar-height) + 1rem);
+  box-shadow: var(--shadow-sm);
+}
+.products-sidebar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+.products-sidebar__header h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+.products-sidebar__section {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.products-sidebar__section:last-child { border-bottom: none; margin-bottom: 0; }
+.products-sidebar__section h4 {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 0.85rem;
+}
+.products-sidebar__radio {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 0;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  transition: color 0.15s;
+}
+.products-sidebar__radio:hover { color: var(--text-primary); }
+.products-sidebar__radio input { accent-color: var(--primary); }
+.products-sidebar__price-inputs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.products-sidebar__price-inputs .form-input { flex: 1; padding: 0.5rem 0.6rem; font-size: 0.8rem; }
+.products-sidebar__price-inputs span { color: var(--text-muted); flex-shrink: 0; }
+.products-sidebar__quick-range {
+  display: block;
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  margin-bottom: 0.3rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  text-align: left;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.products-sidebar__quick-range:hover {
+  background: rgba(196,122,90,0.1);
+  border-color: rgba(196,122,90,0.3);
+  color: var(--primary);
+}
+
+/* Grid Wrapper */
+.products-page__grid-wrap { min-width: 0; }
+.products-page__search-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+  padding: 0.75rem 1rem;
+  background: rgba(196,122,90,0.08);
+  border: 1px solid rgba(196,122,90,0.2);
+  border-radius: var(--radius-md);
+}
+
+@media (max-width: 900px) {
+  .products-page__body { grid-template-columns: 1fr; }
+  .products-sidebar {
+    position: fixed;
+    top: var(--navbar-height);
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    z-index: 500;
+    overflow-y: auto;
+    transform: translateX(-110%);
+    transition: transform 0.3s ease;
+    border-radius: 0;
+    box-shadow: var(--shadow-lg);
+  }
+  .products-sidebar.open { transform: translateX(0); }
+  .products-page__filter-toggle { display: flex; }
+}

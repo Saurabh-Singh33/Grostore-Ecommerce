@@ -1,0 +1,17 @@
+/* Base reset — global.css handles everything else */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #FDF6F0;
+  font-family: 'DM Sans', sans-serif;
+  color: #2D1B12;
+}
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+p { margin: 0; }
