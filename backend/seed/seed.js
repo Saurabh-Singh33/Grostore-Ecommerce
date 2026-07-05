@@ -54,6 +54,15 @@ const categories = [
     description: "Skincare, haircare, and beauty must-haves",
     color: "#a855f7",
   },
+  {
+    id: 6,
+    name: "Sports",
+    slug: "sports",
+    icon: "🏋️",
+    image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80",
+    description: "Performance gear and active lifestyle essentials",
+    color: "#f97316",
+  },
 ];
 
 const products = [
@@ -227,53 +236,29 @@ const products = [
     tags: ["honey", "organic", "pantry"],
     isFeatured: true,
     isTrending: true,
+  },
+  {
+    id: 10,
+    name: "Adjustable Dumbbell Set",
+    slug: "adjustable-dumbbell-set",
+    category: "sports",
+    price: 129.99,
+    originalPrice: 169.99,
+    discount: 24,
+    rating: 4.7,
+    reviewCount: 504,
+    stock: 22,
+    images: ["https://images.unsplash.com/photo-1517963879433-6ad2b056d712?w=800&q=80"],
+    description: "Space-saving dumbbells for effective home workouts.",
+    features: ["2.5-25kg range", "Quick-lock", "Compact stand"],
+    brand: "IronCore",
+    tags: ["gym", "strength", "sports"],
+    isFeatured: true,
+    isTrending: true,
   }
 ];
 
-const TARGET_PRODUCTS_PER_CATEGORY = 8;
-const fallbackImageByCategory = {
-  electronics: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",
-  grocery: "https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&q=80",
-  fashion: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=80",
-  beauty: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=80",
-  home: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=800&q=80",
-};
 
-let nextGeneratedId = products.length + 1;
-for (const category of categories) {
-  const existingCount = products.filter((p) => p.category === category.slug).length;
-  const toGenerate = Math.max(0, TARGET_PRODUCTS_PER_CATEGORY - existingCount);
-
-  for (let i = 1; i <= toGenerate; i += 1) {
-    const generatedName = `${category.name} Essential ${i}`;
-    const generatedSlug = `${category.slug}-essential-${i}`;
-    const basePrice = 20 + i * 7 + nextGeneratedId;
-    const price = Number(basePrice.toFixed(2));
-    const originalPrice = Number((price * 1.25).toFixed(2));
-
-    products.push({
-      id: nextGeneratedId,
-      name: generatedName,
-      slug: generatedSlug,
-      category: category.slug,
-      price,
-      originalPrice,
-      discount: 20,
-      rating: 4.0 + (i % 5) * 0.1,
-      reviewCount: 100 + i * 23,
-      stock: 25 + i * 3,
-      images: [fallbackImageByCategory[category.slug]],
-      description: `${generatedName} is a reliable everyday pick in ${category.name}.`,
-      features: ["Top rated", "Popular choice", "Fast shipping"],
-      brand: `${category.name}Co`,
-      tags: [category.slug, "essentials"],
-      isFeatured: i <= 2,
-      isTrending: i <= 2,
-    });
-
-    nextGeneratedId += 1;
-  }
-}
 
 const users = [
   {
